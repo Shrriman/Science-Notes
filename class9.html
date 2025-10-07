@@ -184,11 +184,15 @@
 
 <header>
   <nav>
-    <h1>Ganapati Tutorial</h1>
+    <div class="h1">
+      <img src="IMG_20251007_141115.jpg" class="ganapati1">
+      <div>Ganapati</div> 
+      <div>Tutorial</div>
+    </div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <ul id="menuList">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#topics">Topics</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#notes">Notes</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -260,9 +264,25 @@
 <footer>© 2025 Ganapati Tutorial. All rights reserved.</footer>
 
 <script>
+
+  // Toggle menu for mobile
   function toggleMenu(){
     document.getElementById("menuList").classList.toggle("show");
   }
+
+  // Navbar links blinking effect
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').substring(1); // remove #
+      const section = document.getElementById(targetId);
+
+      if(section){
+        section.classList.remove('blink');  // remove if already there
+        void section.offsetWidth;           // force reflow to restart animation
+        section.classList.add('blink');
+      }
+    });
+  });
 
   // Open PDF in new tab
   function openPDF(file){
@@ -280,6 +300,7 @@
 
 </body>
 </html>
+
 
 
 
