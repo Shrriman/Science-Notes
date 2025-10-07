@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="or">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganapati Tutorial - Science Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(to bottom, #eef2f7, #dbe6f1);
+    color:#334155;
+    overflow-x:hidden;
+  }
+
+  /* Navbar */
+  header{
+    background:#ffffff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+  }
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+  }
+  nav .h1{
+    font-weight: 700;
+    font-size: 1.7rem;
+    text-shadow: 0 0 #1e3a8a;
+    color:#1e3a8a;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+  }
+  nav ul li a{
+    text-decoration:none;
+    color:#334155;
+    font-weight:500;
+    transition:0.3s;
+  }
+  nav ul li a:hover{color:#1e3a8a;}
+  .menu-icon{display:none;font-size:28px;cursor:pointer;color:#1e3a8a;}
+
+  /* Hero Section */
+  #home{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
+  }
+  #home h2{
+    font-size:52px;
+    color:#1e3a8a;
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateY(-20px);
+    animation:fadeIn 1s forwards;
+  }
+  #home p{
+    font-size:18px;
+    color:#334155;
+    width:85%;
+    max-width:650px;
+    margin-bottom:45px;
+    opacity:0;
+    transform:translateY(-20px);
+    animation:fadeIn 1s 0.5s forwards;
+  }
+
+  /* Buttons */
+  .class-option{
+    background:#06b6d4;
+    color:#fff;
+    padding:20px 55px;
+    margin:15px;
+    border-radius:10px;
+    font-size:24px;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+    transition:0.3s, transform 0.3s, box-shadow 0.3s;
+    display:inline-block;
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeIn 1s 1s forwards;
+  }
+  .class-option:hover{
+    background:#0891b2;
+    transform:scale(1.08);
+    box-shadow:0 12px 28px rgba(0,0,0,0.15);
+  }
+
+  @keyframes fadeIn{
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* Footer */
+  footer{
+    text-align:center;
+    padding:20px;
+    background:#f1f5f9;
+    color:#334155;
+    font-size:14px;
+    box-shadow:0 -2px 12px rgba(0,0,0,0.05);
+  }
+
+  /* Responsive */
+  @media(max-width:768px){
+    nav ul{
+      display:none;
+      flex-direction:column;
+      position:absolute;
+      top:65px;
+      right:20px;
+      background:#fff;
+      width:200px;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      padding:10px;
+    }
+    nav ul.show{display:flex;}
+    .menu-icon{display:block;}
+  }
+  @media(max-width:600px){
+    #home h2{font-size:40px;}
+    #home p{font-size:16px;}
+    .class-option{width:80%;padding:18px;font-size:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="h1">Ganapati Tutorial</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menuList">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home">
+  <img src="c:\Users\MAA\Downloads\ganapati-removebg-preview.png" class="ganapati" oneerror = "src = 'c:\Users\MAA\Downloads\placeholder-img.jpg'">
+  <h2>ଗଣପତି ଟ୍ୟୁଟୋରିଆଲ</h2>
+  <p>9th & 10th class Science notes simple, clean, ଓ interactive ଭାବରେ।</p>
+  
+  <div class="class-option" onclick="window.location.href='class9.html'">Class 9 Science</div>
+  <div class="class-option" onclick="window.location.href='class10.html'">Class 10 Science</div>
+</section>
+
+<footer>
+  © 2025 Ganapati Tutorial. All rights reserved.
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById("menuList").classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>
