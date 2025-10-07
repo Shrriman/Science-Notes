@@ -19,49 +19,50 @@
   * {-webkit-tap-highlight-color: transparent;} 
  body { margin: 0; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman'; background-color: #fff4d0; background:linear-gradient(to bottom, #eef2f7, #dbe6f1); color: #333; padding: 0; height: 100%; -webkit-tap-highlight-color: transparent; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 
-  header{
     background:#ffffff;
     position:sticky;
     top:0;
     z-index:1000;
     box-shadow:0 2px 12px rgba(0,0,0,0.08);
   }
-
   nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 50px;
   }
-
-  nav h1{
-    font-weight:600;
-    font-size:26px;
+  nav .h1{
+    font-weight: 700;
+    font-size: 2rem;
+    text-shadow: 0 0 #1e3a8a;
     color:#1e3a8a;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 42%;
+    gap: 4px;
   }
-
   nav ul{
     list-style:none;
     display:flex;
-    gap:25px;
+    gap: 30px;
+    font-size: 1.48rem;
   }
-
   nav ul li a{
     text-decoration:none;
     color:#334155;
     font-weight:500;
     transition:0.3s;
   }
+  nav ul li a:hover{color:#1e3a8a; text-decoration: underline;}
+  .menu-icon{display:none;font-size:28px;cursor:pointer;color:#1e3a8a;}
 
-  nav ul li a:hover{
-    color:#1e3a8a;
-  }
-
-  .menu-icon{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-    color:#1e3a8a;
+  .ganapati1 {
+    border-radius: 50%;
+    height: 59px;
+    width: auto;
+    border: 3px solid #1e3a8a;
   }
 
   .page-title{
@@ -134,21 +135,46 @@
     box-shadow:0 -2px 12px rgba(0,0,0,0.05);
   }
 
-  @media(max-width:768px){
+   @keyframes fadeIn{
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* Blinking effect for sections */
+  .blink {
+    animation: blinkEffect 0.8s ease-in-out 3;
+  }
+
+  @keyframes blinkEffect {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(255, 223, 0, 0.3); } /* Soft golden highlight */
+  }
+
+    .class-option{width:80%;padding:18px;font-size:20px;}
+    nav .h1{
+      font-size: 1.5rem;
+      margin-left: -14%;
+    }
+
+    .ganapati1 { height: 47px; }
+    .ganapati2 { height: 37%; margin-top: -39%; }
+   
     nav ul{
       display:none;
       flex-direction:column;
       position:absolute;
-      top:65px;
-      right:20px;
+      top:61px;
+      right: 5px;
       background:#fff;
-      width:200px;
+      width: 108px;
       border-radius:8px;
       box-shadow:0 4px 12px rgba(0,0,0,0.1);
       padding:10px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.23rem;
     }
-
-    nav ul.show{display:flex;}
+    nav ul.show{display:flex; right: 0;}
+    .menu-icon{display:block; margin-right: -32px;}
     .topics-container{padding:0 20px 50px 20px;}
   }
 </style>
@@ -253,6 +279,7 @@
 
 </body>
 </html>
+
 
 
 
