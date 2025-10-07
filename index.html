@@ -12,24 +12,23 @@
     background:linear-gradient(to bottom, #eef2f7, #dbe6f1);
     color:#334155;
     overflow-x:hidden;
+    scroll-behavior: smooth; /* smooth scroll */
   }
 
-  * {
-  -webkit-tap-highlight-color: transparent;
-}
+  * {-webkit-tap-highlight-color: transparent;}
     
-body {
-  margin: 0;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman';
-  background-color: #fff4d0;
-  background:linear-gradient(to bottom, #eef2f7, #dbe6f1);
-  color: #333;
-  padding: 0;
-  height: 100%;
-  -webkit-tap-highlight-color: transparent;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; 
-}
+  body {
+    margin: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman';
+    background-color: #fff4d0;
+    background:linear-gradient(to bottom, #eef2f7, #dbe6f1);
+    color: #333;
+    padding: 0;
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
 
   /* Navbar */
   header{
@@ -72,20 +71,20 @@ body {
   nav ul li a:hover{color:#1e3a8a; text-decoration: underline;}
   .menu-icon{display:none;font-size:28px;cursor:pointer;color:#1e3a8a;}
 
- .ganapati1 {
+  .ganapati1 {
     border-radius: 50%;
     height: 59px;
     width: auto;
     border: 3px solid #1e3a8a;
- }
- .ganapati2 {
+  }
+  .ganapati2 {
     height: 46%;
     width: auto;
     margin-top: -2%;
     opacity:0;
     transform:translateY(-20px);
     animation:fadeIn 1s forwards;
- }
+  }
 
   /* Hero Section */
   #home{
@@ -96,6 +95,7 @@ body {
     align-items:center;
     text-align:center;
     padding:0 20px;
+    transition: background-color 0.5s ease;
   }
   #home h2{
     font-size: 2.5rem;
@@ -145,6 +145,16 @@ body {
     to{opacity:1;transform:translateY(0);}
   }
 
+  /* Blinking effect for sections */
+  .blink {
+    animation: blinkEffect 0.8s ease-in-out 3;
+  }
+
+  @keyframes blinkEffect {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(255, 223, 0, 0.3); } /* Soft golden highlight */
+  }
+
   /* Footer */
   footer{
     text-align:center;
@@ -156,25 +166,18 @@ body {
   }
 
   /* Responsive */
-    
   @media(max-width:600px){
     #home h2{font-size: 1.8rem;margin-bottom:42%;margin-top:-37%;}
     #home p{font-size:18px;margin-bottom:45px;margin-top:5%;}
    
     .class-option{width:80%;padding:18px;font-size:20px;}
     nav .h1{
-    font-size: 1.5rem;
-    margin-left: -14%;
-  }
+      font-size: 1.5rem;
+      margin-left: -14%;
+    }
 
-   .ganapati1 {
-    height: 47px;
- }
-
-   .ganapati2 {
-    height: 37%;
-    margin-top: -39%;
- }
+    .ganapati1 { height: 47px; }
+    .ganapati2 { height: 37%; margin-top: -39%; }
    
     nav ul{
       display:none;
@@ -194,7 +197,6 @@ body {
     nav ul.show{display:flex; right: 0;}
     .menu-icon{display:block; margin-right: -32px;}
   }
- 
 </style>
 </head>
 <body>
@@ -202,9 +204,9 @@ body {
 <header>
   <nav>
     <div class="h1">
-    <img src="IMG_20251007_141115.jpg" class="ganapati1">
-    <div>Ganapati</div> 
-    <div>Tutorial</div>
+      <img src="IMG_20251007_141115.jpg" class="ganapati1">
+      <div>Ganapati</div> 
+      <div>Tutorial</div>
     </div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <ul id="menuList">
@@ -215,118 +217,48 @@ body {
   </nav>
 </header>
 
- <div id="h1">
-<section id="home">
-  <h2>Om Namah Ganeshaya</h2>
-  <img src="ganapati2.png" class="ganapati2">
-  <p>Science notes of 9th & 10th class.</p>
+<!-- Sections -->
+<div id="h1">
+  <section id="home">
+    <h2>Om Namah Ganeshaya</h2>
+    <img src="ganapati2.png" class="ganapati2">
+    <p>Science notes of 9th & 10th class.</p>
   
-  <div class="class-option" onclick="window.location.href='class9.html'">Class 9 Science</div>
-  <div class="class-option" onclick="window.location.href='class10.html'">Class 10 Science</div>
-</section>
+    <div class="class-option" onclick="window.location.href='class9.html'">Class 9 Science</div>
+    <div class="class-option" onclick="window.location.href='class10.html'">Class 10 Science</div>
+  </section>
 </div>
+
+<!-- Example Notes Section -->
+<section id="notes" style="height:80vh; padding:50px; background:#fef9f4;">
+  <h2>Notes Section</h2>
+  <p>All your study notes will appear here.</p>
+</section>
 
 <footer id="contact">
   © 2025 Ganapati Tutorial. All rights reserved.
 </footer>
 
 <script>
+  // Toggle menu for mobile
   function toggleMenu(){
     document.getElementById("menuList").classList.toggle("show");
   }
+
+  // Navbar links blinking effect
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').substring(1); // remove #
+      const section = document.getElementById(targetId);
+
+      if(section){
+        section.classList.remove('blink');  // remove if already there
+        void section.offsetWidth;           // force reflow to restart animation
+        section.classList.add('blink');
+      }
+    });
+  });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
